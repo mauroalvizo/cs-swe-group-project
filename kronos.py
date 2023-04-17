@@ -136,7 +136,7 @@ def gamer_group(group_code):
     group = Group.query.filter_by(group_code=group_code)
     
     return render_template (
-        "group_schedule.html",
+        "calendar.schedule_table.html",
         group = group,
         curr_user = current_user,
     )
