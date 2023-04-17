@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Group Code</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #F8F8F8;
+        margin-top: 150px;
+      }
+      
+      h1 {
+        text-align: center;
+        font-size: 35px;
+        margin-top: 10px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      input[type="text"] {
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid black;
+        outline: 1px solid black; 
+      }
+      
+      input[type="submit"] {
+        background-color: #704D99;
+        color: #FFFFFF;
+        font-weight: bold;
+        line-height: 20px;
+        cursor: pointer;
+        width: 100%;
+        height: 40px;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .container {
+        margin: 0 auto;
+        display: block;
+        width: 600px;
+      }
+
+      .joincontainer {
+        float: left;
+        width: 250px;
+        height: 160px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .createcontainer {
+        float: right;
+        width: 250px;
+        height: 160px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .alert {
+        text-align: center;
+        max-width: 600px;
+        left: 38.15%;
+        top: 50%;
+      }
+    
+    </style>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger alert-dismissible fade show center-block" role="alert">
+                <strong> {{ message }} </strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <h1>Enter Group Code or Create New Group</h1>
+    <div class="container">
+      <div class="joincontainer">
+        <label for="group_code">Group Code:</label>
+        <input type="text" id="group_code" name="group_code" placeholder="Enter Group Code"><br>
+        <input type="submit" value="Join">
+      </div>
+      <div class="createcontainer">
+        <label for="group_code">Group Name:</label>
+        <input type="text" id="group_name" name="group_name" placeholder="Enter Group Name"><br>
+        <input type="submit" value="Create new group">
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+  </body>
+</html>

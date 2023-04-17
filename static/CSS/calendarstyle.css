@@ -36,9 +36,10 @@ body{margin-top:20px;}
 
 .schedule-table table tbody td {
     vertical-align: middle;
+    height: 100px;
     border: 1px solid #e2edf8;
     font-weight: 500;
-    padding: 30px;
+    padding: 0px;
     text-align: center;
 }
 
@@ -219,4 +220,20 @@ body{margin-top:20px;}
     .schedule-table table tbody td.day {
         min-width: 135px;
     }
+}
+
+.alert {
+    text-align: center;
+    max-width: 500px;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+}
+
+.available {
+    height: 10px;
+    width: 100%;
+    margin-top: 5px;
+    border: none;
+    outline: none;
 }
