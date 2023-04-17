@@ -69,7 +69,7 @@ def landing():
             return redirect(url_for("register", username=username))
     
     return render_template (
-        "calendar_schedule_table.html"
+        "landing.html"
     )
     
 @app.route('/login')
