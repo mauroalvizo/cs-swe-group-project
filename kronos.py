@@ -127,7 +127,7 @@ def enter_code():
                 return redirect(url_for('enter_code'))
     
     return render_template (
-        "enter_code.html"
+        "group_control.html"
     )
 
 @app.route('/group/<group_code>', methods = ['POST', 'GET'])
