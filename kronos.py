@@ -111,14 +111,20 @@ def enter_code():
             group_code = request.form.get("group_code")
             group = Group.query.filter_by(group_code=group_code)
             
-            if group and group.number_of_members < 6:
-                if not GroupMember.query.filter_by(gamer_id=current_user.gamer_id, group_id=group.group_id).first():
+            if group:
+                if group.number_of_members <= 6 and not GroupMember.query.filter_by(gamer_id=current_user.gamer_id, group_id=group.group_id).first():
                     group_member = GroupMember(gamer_id=current_user.gamer_id, group_id=group.group_id)
                     db.session.add(group_member)
                     db.session.commit()
                     return redirect(url_for("gamer_group", group_code=group_code))
-                else:
-                    return redirect(url_for("gamer_group", group_code=group_code))
+                elif group.number_of_members == 6:
+                    flash("Group at maximum capacity.")
+                    return redirect(url_for('enter_code'))
+            elif group and GroupMember.query.filter_by(gamer_id=current_user.gamer_id, group_id=group.group_id).first():
+                return redirect(url_for("gamer_group", group_code=group_code))
+            elif not group: 
+                flash("No group found.")
+                return redirect(url_for('enter_code'))
     
     return render_template (
         "enter_code.html"
