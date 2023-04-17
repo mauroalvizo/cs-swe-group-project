@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Group Code</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #F8F8F8;
+        margin-top: 150px;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      input[type="text"] {
+        width: 92%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid black;
+        outline: 1px solid black; 
+      }
+      
+      input[type="submit"] {
+        background-color: #704D99;
+        color: #FFFFFF;
+        font-weight: bold;
+        cursor: pointer;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: none;
+      }
+
+      .container {
+        margin: 0 auto;
+        display: block;
+        width: 600px;
+      }
+
+      .joincontainer {
+        float: left;
+        width: 250px;
+        height: 125px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .createcontainer {
+        float: right;
+        width: 250px;
+        height: 125px;
+        margin: 0 auto;
+        background-color: #FFFFFF;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Enter Group Code or Create New Group</h1>
+    <div class="container">
+      <div class="joincontainer">
+        <label for="group_code">Group Code:</label>
+        <input type="text" id="group_code" name="group_code" placeholder="Enter Group Code"><br>
+        <input type="submit" value="Join">
+      </div>
+      <div class="createcontainer">
+        <label for="group_code">Group Name:</label>
+        <input type="text" id="group_name" name="group_name" placeholder="Enter Group Name"><br>
+        <input type="submit" value="Create new group">
+      </div>
+    </div>
+  </body>
+</html>
