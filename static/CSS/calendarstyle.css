@@ -220,3 +220,11 @@ body{margin-top:20px;}
         min-width: 135px;
     }
 }
+
+.alert {
+    text-align: center;
+    max-width: 500px;
+    position: absolute;
+    left: 40%;
+    top: 50%;
+}
