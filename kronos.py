@@ -12,9 +12,11 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
+
 @login_manager.user_loader
 def load_user(id):
     return Gamer.query.get(int(id))
+
 
 #DATABASE MODELS
 class Gamer(db.Model, UserMixin):
@@ -35,6 +37,7 @@ class GroupMember(db.model):
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), primary_key=True)
     gamer = db.relationship('Gamer', backref=db.backref('group_members', lazy=True))
     group = db.relationship('Group', backref=db.backref('group_members', lazy=True))
+    gamer_color = db.Column(db.String(), nullable=False)
     
 class Availability(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,7 +52,7 @@ class Availability(db.Model):
 
 with app.app_context():
     db.create_all()
-    
+
 
 
 
@@ -66,7 +69,7 @@ def landing():
             return redirect(url_for("register", username=username))
     
     return render_template (
-        "landing.html"
+        "calendar_schedule_table.html"
     )
     
 @app.route('/login')
@@ -135,8 +138,14 @@ def gamer_group(group_code):
     group_code = request.args.get('group_code')
     group = Group.query.filter_by(group_code=group_code)
     
+    group_members = GroupMember.query.filter_by(group_id=group.group_id).all()
+    gamer_ids = [member.gamer_id for member in group_members]
+    
     return render_template (
-        "group_schedule.html",
+        "calendar_schedule_table.html",
         group = group,
+        gamer_ids = gamer_ids;
         curr_user = current_user,
-    )
+    ) 
+    
+app.run(debug=True)
