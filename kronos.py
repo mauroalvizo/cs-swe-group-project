@@ -16,6 +16,8 @@ load_dotenv(find_dotenv())
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = os.getenv("HIDDEN_KEY")
+
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
@@ -35,8 +37,8 @@ characters = string.ascii_letters + string.digits
 #DATABASE MODELS
 class Gamer(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(80), nullable=False)
+    username = db.Column(db.String(200), unique=True, nullable=False)
+    password = db.Column(db.String(122), nullable=False)
     
     def is_active(self):
         return True
@@ -52,10 +54,11 @@ class GroupMember(db.Model):
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), primary_key=True)
     gamer = db.relationship('Gamer', backref=db.backref('group_members', lazy=True))
     group = db.relationship('Group', backref=db.backref('group_members', lazy=True))
+    gamer_color = db.Column(db.String(), nullable=False)
     
 class Availability(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    gamer_id = db.Column(db.Integer, db.ForeignKey('Gamer.id'), nullable=False)
+    gamer_id = db.Column(db.Integer, db.ForeignKey('gamer.id'), nullable=False)
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), nullable=False)
     day_of_week = db.Column(db.Integer, nullable=False)
     hour_of_day = db.Column(db.Integer, nullable=False)
@@ -74,7 +77,7 @@ class RegisterForm(FlaskForm):
     
     def validate_user_username(self, username):
         existing_user_username = Gamer.query.filter_by(
-            username=username.data)
+            username=username.data).first()
         
         if existing_user_username:
             raise ValidationError(
@@ -107,7 +110,7 @@ def login():
         if user:
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
-                return redirect(url_for('group_control'))
+                return redirect(url_for('dashboard'))
     return render_template('login.html', form=form)
 
 #temporary destination after login for testing
@@ -118,12 +121,11 @@ def dashboard():
 
 #Offers a register prompt and decrypts the hash
 @app.route('/register' , methods=['GET' , 'POST'])
-
 def register():
     form = RegisterForm()
     
     if form.validate_on_submit():
-        hashed_password = bcrypt.generate_password_hash(form.password.data)
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf8')
         new_user = Gamer(username=form.username.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
@@ -191,7 +193,6 @@ def gamer_group(group_code):
         gamer_ids = gamer_ids,
         curr_user = current_user,
     )
-    
     
 def generate_group_code():
     code_flag = True
