@@ -140,6 +140,7 @@ def logout():
 
 
 @app.route('/group', methods = ['POST', 'GET'])
+@login_required
 def group_control():
     if request.method == 'POST':
         if "Join" in request.form.values():
@@ -176,6 +177,7 @@ def group_control():
     )
 
 @app.route('/group/<group_code>', methods = ['POST', 'GET'])
+@login_required
 def gamer_group(group_code):
     group_code = request.args.get('group_code')
     group = Group.query.filter_by(group_code=group_code)
