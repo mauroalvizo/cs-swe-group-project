@@ -1,6 +1,8 @@
 from flask import *
 import os
 from dotenv import load_dotenv, find_dotenv
+import random
+import string
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_required, login_user, logout_user, current_user
 from flask_wtf import FlaskForm
@@ -26,6 +28,9 @@ login_manager.login_view = 'login'
 def load_user(id):
     return Gamer.query.get(int(id))
 
+#FOR CREATING THE RANDOM GROUP CODE
+code_length = 10
+characters = string.ascii_letters + string.digits
 
 #DATABASE MODELS
 class Gamer(db.Model, UserMixin):
@@ -47,7 +52,6 @@ class GroupMember(db.Model):
     group_id = db.Column(db.Integer, db.ForeignKey('group.id'), primary_key=True)
     gamer = db.relationship('Gamer', backref=db.backref('group_members', lazy=True))
     group = db.relationship('Group', backref=db.backref('group_members', lazy=True))
-    gamer_color = db.Column(db.String(), nullable=False)
     
 class Availability(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -135,7 +139,8 @@ def logout():
 
 
 @app.route('/group', methods = ['POST', 'GET'])
-def enter_code():
+@login_required
+def group_control():
     if request.method == 'POST':
         if "Join" in request.form.values():
             group_code = request.form.get("group_code")
@@ -145,34 +150,59 @@ def enter_code():
                 if group.number_of_members <= 6 and not GroupMember.query.filter_by(gamer_id=current_user.gamer_id, group_id=group.group_id).first():
                     group_member = GroupMember(gamer_id=current_user.gamer_id, group_id=group.group_id)
                     db.session.add(group_member)
+                    group.number_of_members += 1
                     db.session.commit()
+                    
                     return redirect(url_for("gamer_group", group_code=group_code))
                 elif group.number_of_members == 6:
                     flash("Group at maximum capacity.")
-                    return redirect(url_for('enter_code'))
+                    return redirect(url_for('group_control'))
             elif group and GroupMember.query.filter_by(gamer_id=current_user.gamer_id, group_id=group.group_id).first():
                 return redirect(url_for("gamer_group", group_code=group_code))
             elif not group: 
                 flash("No group found.")
-                return redirect(url_for('enter_code'))
+                return redirect(url_for('group_control'))
+            
+        if "Create new group" in request.form.values():
+            group_name = request.form.get("group_name")
+            group_code = generate_group_code()
+            
+            new_group = Group(group_code=group_code, group_name=group_name, number_of_members=1)
+            db.session.add(new_group)
+            db.session.commit()                  
     
     return render_template (
         "group_control.html"
     )
 
 @app.route('/group/<group_code>', methods = ['POST', 'GET'])
+@login_required
 def gamer_group(group_code):
     group_code = request.args.get('group_code')
     group = Group.query.filter_by(group_code=group_code)
     
     group_members = GroupMember.query.filter_by(group_id=group.group_id).all()
+    gamer_names = = (db.session.query(Gamer.username).join(GroupMember).filter_by(group_id=group_id).all())
     gamer_ids = [member.gamer_id for member in group_members]
     
     return render_template(
         "calendar_schedule_table.html",
         group = group,
+        gamer_names=gamer_names,
         gamer_ids = gamer_ids,
         curr_user = current_user,
     )
     
+    
+def generate_group_code():
+    code_flag = True
+    while code_flag:
+        group_code = ''.join(random.choices(characters, k=code_length))
+        if Group.query.filter_by(group_code=group_code):
+            code_flag = True
+        else:
+            code_flag = False
+                
+    return group_code
+
 app.run(debug=True)
