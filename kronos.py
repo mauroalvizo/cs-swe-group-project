@@ -183,11 +183,13 @@ def gamer_group(group_code):
     group = Group.query.filter_by(group_code=group_code)
     
     group_members = GroupMember.query.filter_by(group_id=group.group_id).all()
+    gamer_names = = (db.session.query(Gamer.username).join(GroupMember).filter_by(group_id=group_id).all())
     gamer_ids = [member.gamer_id for member in group_members]
     
     return render_template(
         "calendar_schedule_table.html",
         group = group,
+        gamer_names=gamer_names,
         gamer_ids = gamer_ids,
         curr_user = current_user,
     )
@@ -203,5 +205,5 @@ def generate_group_code():
             code_flag = False
                 
     return group_code
-
+    
 app.run(debug=True)
