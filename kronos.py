@@ -118,6 +118,7 @@ def dashboard():
 
 #Offers a register prompt and decrypts the hash
 @app.route('/register' , methods=['GET' , 'POST'])
+
 def register():
     form = RegisterForm()
     
@@ -204,5 +205,5 @@ def generate_group_code():
             code_flag = False
                 
     return group_code
-
+    
 app.run(debug=True)
