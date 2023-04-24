@@ -190,8 +190,7 @@ def gamer_team(team_code):
     gamer_names = (db.session.query(Gamer.username).join(TeamMember, Gamer.id == TeamMember.gamer_id).filter_by(team_code=team.team_code).all())
     gamer_ids = [member.gamer_id for member in team_members]
     availabilities = get_empty_availabilities_dict(gamer_ids)
-    for hour in range(6, 10):
-        availabilities[1][2][hour] = True
+
 
     return render_template(
         "calendar_schedule_table.html",
