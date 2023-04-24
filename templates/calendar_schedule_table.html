@@ -8,9 +8,9 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/calendarstyle.css') }}">
     </head>
     <body>
-        <div class="container">
+        <div class="availability-container">
             <div class="w-95 w-md-75 w-lg-60 w-xl-55 mx-auto mb-6 text-center">
-                <h2 class="display-18 display-md-16 display-lg-14 mb-0"><span class="text-primary">Chronos</span></h2>
+                <h2 class="display-18 display-md-16 display-lg-14 mb-0"><span class="text-primary" style="margin-left: -3.5%;">{{team_name}}</span></h2>
             </div>
             <div class="row">
                 <div class="col-md-12">
@@ -54,7 +54,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                           {% with gamer_id=gamer_id, day_of_week=1, hour_of_day=hour %}
                                             {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                            {% if availability %}
+                                            {% if availability == True %}
                                               <div class="available" style="background-color: {{ colors[i] }};"></div>
                                             {% else %}
                                               <div class="available" style="background-color: white;"></div>
@@ -68,7 +68,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                           {% with gamer_id=gamer_id, day_of_week=1, hour_of_day=hour %}
                                             {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                            {% if availability %}
+                                            {% if availability == True %}
                                               <div class="available" style="background-color: {{ colors[i] }};"></div>
                                             {% else %}
                                               <div class="available" style="background-color: white;"></div>
@@ -77,8 +77,7 @@
                                         {% endfor %}
                                       </td>
                                     {% endfor %}
-                                  </tr>
-                                  
+                                </tr> 
                                 <tr name="Monday">
                                     <td class="day">Monday</td>
                                     {% for hour in range(12, 24) %}
@@ -86,7 +85,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=2, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -100,7 +99,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=2, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -117,7 +116,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=3, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -131,7 +130,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=3, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -148,7 +147,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=4, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -162,7 +161,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=4, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -179,7 +178,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=5, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -193,7 +192,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=5, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -210,7 +209,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=6, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -224,7 +223,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=6, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -241,7 +240,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=7, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -255,7 +254,7 @@
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
                                             {% with gamer_id=gamer_id, day_of_week=7, hour_of_day=hour %}
                                                 {% set availability = availabilities[gamer_id][day_of_week][hour] %}
-                                                {% if availability %}
+                                                {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
                                                     <div class="available" style="background-color: white;"></div>
@@ -271,16 +270,86 @@
                 </div>
             </div>
         </div>
-
-        <div class="legend">
-            {% set colors = ['red', 'blue', 'green', 'orange', 'purple', 'yellow'] %}
-            <ul class="members">
-                {% for i, username in enumerate(gamer_names) %}
-                    <li style="color: {{colors[i]}};"><div class="gamer" style="color: {{colors[i]}};">{{ str(username)[2:-3] }}</div></li>
-                {% endfor %}
-            </ul>
-        </div>        
-
+        <div class="container">
+            <div class="legend-container">
+                {% set colors = ['red', 'blue', 'green', 'orange', 'purple', 'yellow'] %}
+                <ul class="members" style="list-style: disc;">
+                    {% for i, username in enumerate(gamer_names) %}
+                        <li style="color: {{colors[i]}};"><div class="gamer" style="color: {{colors[i]}};">{{ str(username)[2:-3] }}</div></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="interaction-container">
+                <form method="post">
+                    <label for="time">Select a time range:</label>
+                    <select id="start-time" name="start-time">
+                        <option value="0">12:00 AM</option>
+                        <option value="1">1:00 AM</option>
+                        <option value="2">2:00 AM</option>
+                        <option value="3">3:00 AM</option>
+                        <option value="4">4:00 AM</option>
+                        <option value="5">5:00 AM</option>
+                        <option value="6">6:00 AM</option>
+                        <option value="7">7:00 AM</option>
+                        <option value="8">8:00 AM</option>
+                        <option value="9">9:00 AM</option>
+                        <option value="10">10:00 AM</option>
+                        <option value="11">11:00 AM</option>
+                        <option value="12">12:00 PM</option>
+                        <option value="13">1:00 PM</option>
+                        <option value="14">2:00 PM</option>
+                        <option value="15">3:00 PM</option>
+                        <option value="16">4:00 PM</option>
+                        <option value="17">5:00 PM</option>
+                        <option value="18">6:00 PM</option>
+                        <option value="19">7:00 PM</option>
+                        <option value="20">8:00 PM</option>
+                        <option value="21">9:00 PM</option>
+                        <option value="22">10:00 PM</option>
+                        <option value="23">11:00 PM</option>
+                        <option value="24">12:00 AM</option>
+                    </select>
+                    <select id="stop-time" name="stop-time">
+                        <option value="0">12:00 AM</option>
+                        <option value="1">1:00 AM</option>
+                        <option value="2">2:00 AM</option>
+                        <option value="3">3:00 AM</option>
+                        <option value="4">4:00 AM</option>
+                        <option value="5">5:00 AM</option>
+                        <option value="6">6:00 AM</option>
+                        <option value="7">7:00 AM</option>
+                        <option value="8">8:00 AM</option>
+                        <option value="9">9:00 AM</option>
+                        <option value="10">10:00 AM</option>
+                        <option value="11">11:00 AM</option>
+                        <option value="12">12:00 PM</option>
+                        <option value="13">1:00 PM</option>
+                        <option value="14">2:00 PM</option>
+                        <option value="15">3:00 PM</option>
+                        <option value="16">4:00 PM</option>
+                        <option value="17">5:00 PM</option>
+                        <option value="18">6:00 PM</option>
+                        <option value="19">7:00 PM</option>
+                        <option value="20">8:00 PM</option>
+                        <option value="21">9:00 PM</option>
+                        <option value="22">10:00 PM</option>
+                        <option value="23">11:00 PM</option>
+                        <option value="24">12:00 AM</option>
+                    </select>
+                    <select id="day" name="day">
+                        <option value="1">Sunday</option>
+                        <option value="2">Monday</option>
+                        <option value="3">Tuesday</option>
+                        <option value="4">Wednesday</option>
+                        <option value="5">Thursday</option>
+                        <option value="6">Friday</option>
+                        <option value="7">Saturday</option>
+                    </select>              
+                    <input type="submit" name="add-availability" value="Add Availability">
+                    <input type="submit" name="remove-availability" value="Remove Availability">
+                </form>
+            </div>        
+        </div>
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript"></script>
