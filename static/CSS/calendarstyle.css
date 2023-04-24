@@ -3,6 +3,9 @@ body{margin-top:20px;}
 
 .schedule-table {
     overflow-x: scroll;
+    width: 2500px;
+    margin-left: 30px;
+    margin-top: 10px;
 }
 
 
@@ -232,8 +235,34 @@ body{margin-top:20px;}
 
 .available {
     height: 10px;
-    width: 100%;
+    width: 101%;
     margin-top: 5px;
     border: none;
     outline: none;
+}
+
+.container {
+    display: block;
+    justify-content: center;
+    margin-left: 35.5%;
+    margin-top: 20px;
+}
+
+.legend-container {
+    display: block;
+    justify-content: center;
+}
+
+.interaction-container {
+    display: block;
+    justify-content: center;
+}
+
+.members li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+ul.members {
+    list-style: disc;
 }

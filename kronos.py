@@ -143,7 +143,6 @@ def logout():
 def team_control():
     print(request.form)
     if "team_code" in request.form:
-        print("WHY THE FUCK AM I HERE")
         team_code = request.form.get("team_code")
         team = Team.query.filter_by(team_code=team_code).first()
         
@@ -153,7 +152,7 @@ def team_control():
                 db.session.add(team_member)
                 team.number_of_members += 1
                 db.session.commit()
-                
+                update_availabilities(current_user.id, team_code)
                 return redirect(url_for("gamer_team", team_code=team_code))
             elif team.number_of_members >= 6:
                 flash("team at maximum capacity.")
@@ -165,7 +164,6 @@ def team_control():
             return redirect(url_for('team_control'))
         
     elif "team_name" in request.form:
-        print("THIS IS WHERE I AM SUPPOSED TO BE")
         team_name = request.form.get("team_name")
         team_code = generate_team_code()
         
@@ -174,7 +172,8 @@ def team_control():
         team_member = TeamMember(gamer_id=current_user.id, team_code=new_team.team_code)
         db.session.add(team_member)
         db.session.commit()  
-        
+        update_availabilities(current_user.id, team_code)
+
         return redirect(url_for('gamer_team', team_code=team_code))                
     
     return render_template (
@@ -189,10 +188,32 @@ def gamer_team(team_code):
     team_members = TeamMember.query.filter_by(team_code=team.team_code).all()
     gamer_names = (db.session.query(Gamer.username).join(TeamMember, Gamer.id == TeamMember.gamer_id).filter_by(team_code=team.team_code).all())
     gamer_ids = [member.gamer_id for member in team_members]
-    availabilities = get_empty_availabilities_dict(gamer_ids)
-    for hour in range(6, 10):
-        availabilities[1][2][hour] = True
+    team_name = team.team_name
+    
+    availabilities = get_users_availabilities_dict(gamer_ids, team.team_code)
+    
+    if request.method == 'POST':
+        start_time = int(request.form['start-time'])
+        stop_time = int(request.form['stop-time'])
+        day = int(request.form['day'])
 
+        if request.form.get('add-availability'):
+            print("INSIDE ADD")
+            for hour in range(start_time, stop_time):
+                availability = Availability.query.filter_by(gamer_id=current_user.id, team_code=team.team_code, day_of_week=day, hour_of_day=hour).first()
+                availability.is_available = True
+                db.session.add(availability)
+                db.session.commit()
+                
+        elif request.form.get('remove-availability'):
+            for hour in range(start_time, stop_time):
+                availability = Availability.query.filter_by(gamer_id=current_user.id, team_code=team.team_code, day_of_week=day, hour_of_day=hour).first()
+                availability.is_available = False
+                db.session.add(availability)
+                db.session.commit()
+                
+        return redirect(url_for('gamer_team', team_code=team_code))
+            
     return render_template(
         "calendar_schedule_table.html",
         team=team,
@@ -201,7 +222,8 @@ def gamer_team(team_code):
         curr_user=current_user,
         enumerate=enumerate,
         str=str,
-        availabilities=availabilities
+        availabilities=availabilities,
+        team_name=team_name
     )
         
 def generate_team_code():
@@ -215,7 +237,7 @@ def generate_team_code():
                 
     return team_code
 
-def get_empty_availabilities_dict(gamer_ids):
+def get_users_availabilities_dict(gamer_ids, team_code):
     availability_dict = {}
 
     for gamer_id in gamer_ids:
@@ -223,8 +245,16 @@ def get_empty_availabilities_dict(gamer_ids):
         for day in range(1, 8):
             availability_dict[gamer_id][day] = {}
             for hour in range(0, 24):
-                availability_dict[gamer_id][day][hour] = False
+                availability = Availability.query.filter_by(gamer_id=gamer_id, team_code=team_code, day_of_week=day, hour_of_day=hour).first()
+                availability_dict[gamer_id][day][hour] = availability.is_available
 
     return availability_dict
+
+def update_availabilities(gamer_id, team_code):
+    for day in range (1, 8):
+        for hour in range(0, 24):
+            availability = Availability(gamer_id=gamer_id, team_code=team_code, day_of_week=day, hour_of_day=hour, is_available=False)
+            db.session.add(availability)
+            db.session.commit()
     
 app.run(debug=True)
