@@ -197,6 +197,7 @@ def gamer_team(team_code):
         stop_time = int(request.form['stop-time'])
         day = int(request.form['day'])
 
+
         if request.form.get('add-availability'):
             print("INSIDE ADD")
             for hour in range(start_time, stop_time):
