@@ -185,7 +185,7 @@ def gamer_group(group_code):
     group = Group.query.filter_by(group_code=group_code)
     
     group_members = GroupMember.query.filter_by(group_id=group.group_id).all()
-    gamer_names = = (db.session.query(Gamer.username).join(GroupMember).filter_by(group_id=group_id).all())
+    gamer_names = (db.session.query(Gamer.username).join(GroupMember).filter_by(group_id=group_id).all())
     gamer_ids = [member.gamer_id for member in group_members]
     
     return render_template(
