@@ -1,17 +1,53 @@
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Home</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+  <head>
+    <meta charset="UTF-8">
+    <title>Kronos</title>
+    <style>
+        body {
+          font-family: 'Proxima Nova', sans-serif;
+        }
+        h1 {
+          text-align: center;
+          font-size: 4em;
+          margin-top: 100px;
+        }
+        .container {
+          text-align: center;
+          background-color: #f2f2f2; 
+          margin-top: 50px;
+          width: auto;
+        }
+        .container p {
+          font-size: 2em;
+          font-weight: bold;
+          margin-bottom: 20px;
+        }
+        .btn {
+          display: inline-block;
+          margin: 0 20px;
+          padding: 20px;
+          font-size: 2em;
+          font-weight: bold;
+          border-radius: 5px;
+          background-color: #007bff;
+          color: #fff;
+          text-align: center;
+          text-decoration: none;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+        }
+        .btn:hover {
+          background-color: #0062cc;
+        }
+      </style>
     </head>
     <body>
-        <h1>Login Authentication in Flask</h1>
-        <a href = "{{url_for('login')}}">Login</a><br>
-        <a href = "{{url_for('register')}}">Register</a><br>
+      <h1>Welcome to Kronos</h1>
+      <div class="container">
+        <p>Please log in or register to continue:</p>
+        <a href="/login" class="btn">Login</a>
+        <a href="/register" class="btn">Register</a>
+      </div>
     </body>
-</html>
+  </html>
