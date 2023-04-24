@@ -50,39 +50,42 @@
                                 <tr name="Sunday">
                                     <td class="day">Sunday</td>
                                     {% for hour in range(12, 24) %}
-                                        <td class="active">
+                                      <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=1 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
-                                                {% if availability %}
-                                                    <div class="available" style="background-color: {{ colors[i] }};"></div>
-                                                {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
-                                                {% endif %}
-                                            {% endwith %}
+                                          {% with gamer_id=gamer_id, day_of_week=1, hour_of_day=hour %}
+                                            {% set availability = availabilities[gamer_id][day_of_week][hour] %}
+                                            {% if availability %}
+                                              <div class="available" style="background-color: {{ colors[i] }};"></div>
+                                            {% else %}
+                                              <div class="available" style="background-color: white;"></div>
+                                            {% endif %}
+                                          {% endwith %}
                                         {% endfor %}
+                                      </td>
                                     {% endfor %}
-                                    {% for hour in range(1, 12) %}
+                                    {% for hour in range(0, 12) %}
+                                      <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=1 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
-                                                {% if availability %}
-                                                    <div class="available" style="background-color: {{ colors[i] }};"></div>
-                                                {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
-                                                {% endif %}
-                                            {% endwith %}
+                                          {% with gamer_id=gamer_id, day_of_week=1, hour_of_day=hour %}
+                                            {% set availability = availabilities[gamer_id][day_of_week][hour] %}
+                                            {% if availability %}
+                                              <div class="available" style="background-color: {{ colors[i] }};"></div>
+                                            {% else %}
+                                              <div class="available" style="background-color: white;"></div>
+                                            {% endif %}
+                                          {% endwith %}
                                         {% endfor %}
-                                        </td>
+                                      </td>
                                     {% endfor %}
-                                </tr>
+                                  </tr>
+                                  
                                 <tr name="Monday">
                                     <td class="day">Monday</td>
                                     {% for hour in range(12, 24) %}
                                         <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=2 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=2, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -90,11 +93,13 @@
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
+                                    </td>
                                     {% endfor %}
-                                    {% for hour in range(1, 12) %}
+                                    {% for hour in range(0, 12) %}
+                                        <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=2 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=2, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -110,8 +115,8 @@
                                     {% for hour in range(12, 24) %}
                                         <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=3 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=3, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -119,11 +124,13 @@
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
+                                        </td>
                                     {% endfor %}
-                                    {% for hour in range(1, 12) %}
+                                    {% for hour in range(0, 12) %}
+                                        <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=3 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=3, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -139,8 +146,8 @@
                                     {% for hour in range(12, 24) %}
                                         <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=4 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=4, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -148,11 +155,13 @@
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
+                                        </td>
                                     {% endfor %}
-                                    {% for hour in range(1, 12) %}
+                                    {% for hour in range(0, 12) %}
+                                        <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=4 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=4, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -168,8 +177,8 @@
                                     {% for hour in range(12, 24) %}
                                         <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=5 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=5, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -177,11 +186,13 @@
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
+                                        </td>
                                     {% endfor %}
-                                    {% for hour in range(1, 12) %}
+                                    {% for hour in range(0, 12) %}
+                                        <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=5 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=5, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -197,8 +208,8 @@
                                     {% for hour in range(12, 24) %}
                                         <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=6 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=6, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -206,11 +217,13 @@
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
+                                        </td>
                                     {% endfor %}
-                                    {% for hour in range(1, 12) %}
+                                    {% for hour in range(0, 12) %}
+                                        <td class="active">
                                         {% for i, gamer_id in enumerate(gamer_ids) %}
-                                            {% with gamer_id=gamer_id day_of_week=6 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                            {% with gamer_id=gamer_id, day_of_week=6, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -225,9 +238,9 @@
                                     <td class="day">Saturday</td>
                                     {% for hour in range(12, 24) %}
                                         <td class="active">
-                                        {% for gamer_id in gamer_ids %}
-                                            {% with gamer_id=gamer_id day_of_week=7 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                        {% for i, gamer_id in enumerate(gamer_ids) %}
+                                            {% with gamer_id=gamer_id, day_of_week=7, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -235,11 +248,13 @@
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
+                                        </td>
                                     {% endfor %}
-                                    {% for hour in range(1, 12) %}
-                                        {% for gamer_id in gamer_ids %}
-                                            {% with gamer_id=gamer_id day_of_week=7 hour_of_day=hour %}
-                                                {% set availability = Availability.query.filter_by(gamer_id=gamer_id, day_of_week=day_of_week, hour_of_day=hour).first() %}
+                                    {% for hour in range(0, 12) %}
+                                        <td class="active">
+                                        {% for i, gamer_id in enumerate(gamer_ids) %}
+                                            {% with gamer_id=gamer_id, day_of_week=7, hour_of_day=hour %}
+                                                {% set availability = availabilities[gamer_id][day_of_week][hour] %}
                                                 {% if availability %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
@@ -261,7 +276,7 @@
             {% set colors = ['red', 'blue', 'green', 'orange', 'purple', 'yellow'] %}
             <ul class="members">
                 {% for i, username in enumerate(gamer_names) %}
-                    <li><div class="gamer" style="color: {{colors[i]}};">{{username}}</div></li>
+                    <li style="color: {{colors[i]}};"><div class="gamer" style="color: {{colors[i]}};">{{ str(username)[2:-3] }}</div></li>
                 {% endfor %}
             </ul>
         </div>        
