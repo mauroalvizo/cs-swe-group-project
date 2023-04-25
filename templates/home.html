@@ -12,27 +12,40 @@
             color: white;
           }
         h1 {
-          text-align: left;
+          text-align: center;
           font-size: 4em;
           margin-top: 100px;
           margin-left: 50px;
         }
-        .container {
-          text-align: center; 
-          margin-top: 50px;
-          width: auto;
-          color: #fff;
-          display: inline-block;
-          float: right;
-        }
-        .container p {
+        h3 {
+          text-align: center;
           font-size: 2em;
-          font-weight: bold;
+          margin-top: 50px;
           margin-bottom: 20px;
+          color: white;
         }
-        .btn {
+        .video-container {
+          margin: 50px auto;
+          padding: 20px;
+          max-width: 1000px;
+          background-color: #352c52;
+          border-radius: 10px;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .video-container iframe {
+          display: block;
+          margin: 0 auto;
+        }
+        .toolbar {
+          display: flex;
+          justify-content: flex-end;
+          align-items: center;
+          height: 80px;
+          padding-right: 20px;
+        }
+        .toolbar a {
           display: inline-block;
-          margin: 0 20px;
+          margin-left: 20px;
           padding: 20px;
           font-size: 2em;
           font-weight: bold;
@@ -44,7 +57,7 @@
           cursor: pointer;
           transition: background-color 0.3s ease;
         }
-        .btn:hover {
+        .toolbar a:hover {
           background-color: #211b33;
         }
         a img {
@@ -52,17 +65,46 @@
             height: 100px;
             border-radius: 10px;
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-          }
+        }
+        .logo-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin: 3px;
+          display: flex;
+          align-items: center;
+        }
+        .logo-container img {
+          width: 100px;
+          height: 100px;
+          border-radius: 10px;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .logo-container h2 {
+            color: #fff;
+            margin-left: 10px;
+            font-size: 2.5em;
+        }
+        
       </style>
     </head>
     <body>
-      <a href="/" target="_blank"><img src="https://thumbs2.imgbox.com/5b/3a/sZIQ12PE_t.png" alt="image host" style="position: absolute; top: 0; left: 0; margin: 20px;"/></a><br>
-      <br><br><br><br>
+
+      <div class="logo-container">
+        <a href="/" target="_blank">
+          <img src="https://thumbs2.imgbox.com/5b/3a/sZIQ12PE_t.png" alt="image host" />
+        </a>
+        <h2>Kronos</h2>
+      </div>
+
+      <div class="toolbar">
+        <a href="/login">Login</a>
+        <a href="/register">Register</a>
+      </div>
       <h1>Welcome to Kronos</h1>
-      <div class="container">
-        <p>Please log in or register to continue:</p>
-        <a href="/login" class="btn">Login</a><br><br>
-        <a href="/register" class="btn">Register</a>
+      <div class="video-container">
+        <h3>What is Kronos?</h3><br>
+        <iframe width="1000" height="600" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
     </body>
 </html>
