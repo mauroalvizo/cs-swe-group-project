@@ -8,6 +8,13 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/calendarstyle.css') }}">
     </head>
     <body>
+        <div class="background-image"></div>
+        <div class="logo-container">
+            <a href="{{url_for('home')}}">
+                <img src="https://thumbs2.imgbox.com/5b/3a/sZIQ12PE_t.png" alt="image host" />
+            </a>
+        <h10>Kronos</h10>
+        </div>
         <div class="availability-container">
             <div class="w-95 w-md-75 w-lg-60 w-xl-55 mx-auto mb-6 text-center">
                 <h2 class="display-18 display-md-16 display-lg-14 mb-0"><span class="text-primary" style="margin-left: -3.5%;">{{team_name}}</span></h2>
@@ -58,7 +65,7 @@
                                             {% if availability == True %}
                                               <div class="available" style="background-color: {{ colors[i] }};"></div>
                                             {% else %}
-                                              <div class="available" style="background-color: white;"></div>
+                                              <div class="available" style="background-color: #36393e;"></div>
                                             {% endif %}
                                           {% endwith %}
                                         {% endfor %}
@@ -72,7 +79,7 @@
                                             {% if availability == True %}
                                               <div class="available" style="background-color: {{ colors[i] }};"></div>
                                             {% else %}
-                                              <div class="available" style="background-color: white;"></div>
+                                              <div class="available" style="background-color: #36393e;"></div>
                                             {% endif %}
                                           {% endwith %}
                                         {% endfor %}
@@ -89,7 +96,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -103,7 +110,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -120,7 +127,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -134,7 +141,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -151,7 +158,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -165,7 +172,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -182,7 +189,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -196,7 +203,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -213,7 +220,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -227,7 +234,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -244,7 +251,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
@@ -258,7 +265,7 @@
                                                 {% if availability == True %}
                                                     <div class="available" style="background-color: {{ colors[i] }};"></div>
                                                 {% else %}
-                                                    <div class="available" style="background-color: white;"></div>
+                                                    <div class="available" style="background-color: #36393e;"></div>
                                                 {% endif %}
                                             {% endwith %}
                                         {% endfor %}
