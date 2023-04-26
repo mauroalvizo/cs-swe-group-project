@@ -114,6 +114,7 @@ def login():
             if bcrypt.check_password_hash(user.password, form.password.data):
                 login_user(user)
                 return redirect(url_for('team_control'))
+        flash("There was an issue logging in. Please Try again.")
     return render_template('login.html', form=form)
 
 #Offers a register prompt and decrypts the hash
@@ -126,8 +127,7 @@ def register():
         new_user = Gamer(username=form.username.data, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('login'))
-    
+        return redirect(url_for('login'))        
     return render_template('register.html', form=form)
     
 #logs out to login screen
@@ -183,7 +183,7 @@ def team_control():
 @app.route('/calendar/<team_code>', methods=['POST', 'GET'])
 @login_required
 def gamer_team(team_code):
-
+    
     team = Team.query.filter_by(team_code=team_code).first()
     team_members = TeamMember.query.filter_by(team_code=team.team_code).all()
     gamer_names = (db.session.query(Gamer.username).join(TeamMember, Gamer.id == TeamMember.gamer_id).filter_by(team_code=team.team_code).all())
@@ -224,7 +224,8 @@ def gamer_team(team_code):
         enumerate=enumerate,
         str=str,
         availabilities=availabilities,
-        team_name=team_name
+        team_name=team_name,
+        team_code=team_code
     )
         
 def generate_team_code():
