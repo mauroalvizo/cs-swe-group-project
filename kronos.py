@@ -155,7 +155,7 @@ def team_control():
                 update_availabilities(current_user.id, team_code)
                 return redirect(url_for("gamer_team", team_code=team_code))
             elif team.number_of_members >= 6:
-                flash("team at maximum capacity.")
+                flash("Team at maximum capacity.")
                 return redirect(url_for('team_control'))
             elif team and TeamMember.query.filter_by(gamer_id=current_user.id, team_code=team.team_code).first():
                 return redirect(url_for("gamer_team", team_code=team_code))
