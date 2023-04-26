@@ -8,12 +8,23 @@
           background-color: #424549;
           font-family: 'Proxima Nova', sans-serif;
         }
+        .background-image {
+          background-image: url("https://lh3.googleusercontent.com/Debh11wkMr42NFn976HGZIVOJamQ4epogyXTHToAgei-UolWI47F603BjH7Vjaq6-oP0a00qbF82FQ4pww28JLZf7chta03ib9i6dSc6P3guhw4O9GoeXVgW4BOtFs8TDTELA6E3u2iZ9-6V438vL49noDtFkF0WzUESLI5WIiFOAAUE9qz2eXhHzqhySihRc5l91a96YVmQMpRGC5hk8us0OnOh6Gel486ZE8mnN0YXurpNukS48m0xaltFcqBdiLN2Sm0ykQJsgqp55wAufBTfgUjJS3RBMRKWEZ2fLIFF1IxIPEUsPG7YsNCCxC55kl3bjeFbLQ1d-wz-pK-bwWN1FmgBa02e0Ohi73hXR3daHKiMXUWPaMINmVr0CbRP6VGxqgCgxQO3dg_Tjf5J5PlgnjrcBaChf2fYXKwo-i6u9xZpOugJRo5n7KjNHZpis-UhFdBzY6ljWJNg0BPeWuj-PBcEjzPSTr75D3t29ck5IgITB-WcOF_LKkhwzrZGytsrGN31fqjflkHI7ddr5Co9nPkFob0Mbel8xEkmJ6zJzbUC4e1nZxuJOqlgGFZCCoDxdHMbFoxF0v6hzSF_iIQsAklRfW3kDZTj_g0z1fUn450MYbAHiESYLwyZWMcx20XNEyCf9sIEJ1le8QweGcxDfYBzQs5UU1epy61ts-aTFGBPqVoYOAnNhIbK1IYvHh4n9m69f_ZreHqFu0pku9FsLorUc9UcUD7zAPFuEBVehRrl2tZYe1FBdwnadeZAmB5QYYePVZHQcZLlfAUv6DLYoLQZbJldr_YooUZQiApMHH3x2DJ4AXZ76vmkjyUcwVGvC8XlmmAaF_JirFQKY1hVZopMmMlW8yibOKtVBFRyzi_SoywZY4xJDSP55hPTEm_fIRmSkycA6gdInWauq8y43z_PpQ7TjZOKdlLnp4aR5Vo44ZKDqkD-ZyUFfrEaKNoBPFePKVAp3FdDsqeyuMDVvHvxUOrvULM7KfTfIwS4lvEj0R22SgZud5ykGlBPEpCbfX7ld-GI3x0DEpbJnN2m4ww=w2245-h1263-s-no?authuser=0");
+          background-size: cover;
+          background-position: center;
+          position: fixed;
+          top: 0px;
+          left: 0;
+          right: 0;
+          bottom: 0; /* adjust to match toolbar height */
+          z-index: -1;
+        }
         h1, h1 * {
             color: white;
           }
         h1 {
           text-align: center;
-          font-size: 4em;
+          font-size: 3em;
           margin-top: 100px;
           margin-left: 50px;
         }
@@ -28,7 +39,7 @@
           margin: 50px auto;
           padding: 20px;
           max-width: 1000px;
-          background-color: #352c52;
+          background-color: #2a2c2e;
           border-radius: 10px;
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         }
@@ -50,7 +61,7 @@
           font-size: 2em;
           font-weight: bold;
           border-radius: 5px;
-          background-color: #352c52;
+          background-color: #2a2c2e;
           color: #fff;
           text-align: center;
           text-decoration: none;
@@ -58,7 +69,7 @@
           transition: background-color 0.3s ease;
         }
         .toolbar a:hover {
-          background-color: #211b33;
+          background-color: #1a1b1c;
         }
         a img {
             width: 100px;
@@ -89,9 +100,9 @@
       </style>
     </head>
     <body>
-
+      <div class="background-image"></div>
       <div class="logo-container">
-        <a href="/" target="_blank">
+        <a href="/">
           <img src="https://thumbs2.imgbox.com/5b/3a/sZIQ12PE_t.png" alt="image host" />
         </a>
         <h2>Kronos</h2>
@@ -101,7 +112,7 @@
         <a href="/login">Login</a>
         <a href="/register">Register</a>
       </div>
-      <h1>Welcome to Kronos</h1>
+      <h1>Coordinating game night has never been easier.</h1>
       <div class="video-container">
         <h3>What is Kronos?</h3><br>
         <iframe width="1000" height="600" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Rick Astley - Never Gonna Give You Up (Official Music Video)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

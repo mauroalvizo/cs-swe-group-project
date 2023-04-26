@@ -7,15 +7,30 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-        /* Style the container */
+        body {
+            background-color: #424549;
+            font-family: 'Proxima Nova', sans-serif;
+          }
+          .background-image {
+            background-image: url("https://lh3.googleusercontent.com/Debh11wkMr42NFn976HGZIVOJamQ4epogyXTHToAgei-UolWI47F603BjH7Vjaq6-oP0a00qbF82FQ4pww28JLZf7chta03ib9i6dSc6P3guhw4O9GoeXVgW4BOtFs8TDTELA6E3u2iZ9-6V438vL49noDtFkF0WzUESLI5WIiFOAAUE9qz2eXhHzqhySihRc5l91a96YVmQMpRGC5hk8us0OnOh6Gel486ZE8mnN0YXurpNukS48m0xaltFcqBdiLN2Sm0ykQJsgqp55wAufBTfgUjJS3RBMRKWEZ2fLIFF1IxIPEUsPG7YsNCCxC55kl3bjeFbLQ1d-wz-pK-bwWN1FmgBa02e0Ohi73hXR3daHKiMXUWPaMINmVr0CbRP6VGxqgCgxQO3dg_Tjf5J5PlgnjrcBaChf2fYXKwo-i6u9xZpOugJRo5n7KjNHZpis-UhFdBzY6ljWJNg0BPeWuj-PBcEjzPSTr75D3t29ck5IgITB-WcOF_LKkhwzrZGytsrGN31fqjflkHI7ddr5Co9nPkFob0Mbel8xEkmJ6zJzbUC4e1nZxuJOqlgGFZCCoDxdHMbFoxF0v6hzSF_iIQsAklRfW3kDZTj_g0z1fUn450MYbAHiESYLwyZWMcx20XNEyCf9sIEJ1le8QweGcxDfYBzQs5UU1epy61ts-aTFGBPqVoYOAnNhIbK1IYvHh4n9m69f_ZreHqFu0pku9FsLorUc9UcUD7zAPFuEBVehRrl2tZYe1FBdwnadeZAmB5QYYePVZHQcZLlfAUv6DLYoLQZbJldr_YooUZQiApMHH3x2DJ4AXZ76vmkjyUcwVGvC8XlmmAaF_JirFQKY1hVZopMmMlW8yibOKtVBFRyzi_SoywZY4xJDSP55hPTEm_fIRmSkycA6gdInWauq8y43z_PpQ7TjZOKdlLnp4aR5Vo44ZKDqkD-ZyUFfrEaKNoBPFePKVAp3FdDsqeyuMDVvHvxUOrvULM7KfTfIwS4lvEj0R22SgZud5ykGlBPEpCbfX7ld-GI3x0DEpbJnN2m4ww=w2245-h1263-s-no?authuser=0");
+            background-size: cover;
+            background-position: center;
+            position: fixed;
+            top: 0px;
+            left: 0;
+            right: 0;
+            bottom: 0; /* adjust to match toolbar height */
+            z-index: -1;
+          }
+       
         .container {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
+            background-color: #2a2c2e;
+            padding: 35px;
         }
         
         /* Style the form */
@@ -26,9 +41,9 @@
         
         /* Style the input fields */
         input[type=text], input[type=password] {
-            width: 100%;
+            width: 92%;
             padding: 10px;
-            margin: 5px 0 10px 0;
+            margin: 10px 0 10px 0;
             border: none;
             border-radius: 3px;
             background-color: #f9f9f9;
@@ -36,7 +51,7 @@
         
         /* Style the submit button */
         input[type=submit] {
-            background-color: #4CAF50;
+            background-color: #6a1894;
             color: white;
             padding: 10px;
             border: none;
@@ -46,7 +61,7 @@
         
         /* Style the link */
         a {
-            color: blue;
+            color: #2a71b8;
             text-decoration: none;
             font-size: 12px;
             
@@ -61,12 +76,47 @@
         h1 {
             font-family: "Proxima Nova", sans-serif;
             font-size: 30px;
+            color: #fff;
+        }
+        a img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .logo-container {
+          position: absolute;
+          top: 0;
+          left: 0;
+          margin: 3px;
+          display: flex;
+          align-items: center;
+        }
+        .logo-container img {
+          width: 100px;
+          height: 100px;
+          border-radius: 10px;
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        .logo-container h2 {
+            color: #fff;
+            margin-left: 10px;
+            font-size: 2.5em;
         }
     </style>
 </head>
 <body>
+
+    <div class="background-image"></div>
+    <div class="logo-container">
+        <a href="{{url_for('home')}}">
+          <img src="https://thumbs2.imgbox.com/5b/3a/sZIQ12PE_t.png" alt="image host" />
+        </a>
+        <h2>Kronos</h2>
+    </div>
+
     <div class="container">
-        <h1>Make an account</h1>
+        <h1>Create an account</h1>
 
         <form method="POST" action="">
             {{ form.hidden_tag() }}
