@@ -8,7 +8,7 @@
 ### https://github.com/mauroalvizo/cs-swe-group-project  
 <br>
 <br>
-## Technical Requirements  
+## Technical Requirements  <br>
 #### - Python Flask server deployed on fly.io  
 #### - Postgres database with multiple tables and table relationships  
 #### - User login using Flask Login and bcrypt for password hashing  
