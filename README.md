@@ -6,15 +6,15 @@
 ### https://docs.google.com/document/d/1JeMKrvNMKk2FocpwpJus1OEeHwNTExRFpzt5hWYIFM4/edit?usp=sharing  
 ## Github Link  
 ### https://github.com/mauroalvizo/cs-swe-group-project  
-<br>
-<br>
-## Technical Requirements  <br>
+<br> 
+<br> 
+## Technical Requirements
 #### - Python Flask server deployed on fly.io  
 #### - Postgres database with multiple tables and table relationships  
 #### - User login using Flask Login and bcrypt for password hashing  
 #### - Beutification if we do say so ourselves  
-<br>
-<br>
+<br> 
+<br> 
 ## Pull request links  
 ### Pull requests made by Jayton and reviewed by Mauro  
 #### -  
@@ -24,8 +24,8 @@
 ### -  
 ### -  
 ### -  
-<br>
-<br>
+<br> 
+<br> 
 ## Two things that we enjoyed  
 #### -  
 #### -  
