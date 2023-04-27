@@ -7,16 +7,16 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='CSS/calendarstyle.css') }}">
     </head>
-    <body>
+    <body style="overflow: auto; overflow-x: hidden">
         <div class="background-image"></div>
         <div class="logo-container" style="margin-left: 25px">
             <a href="{{url_for('home')}}">
                 <img src="https://thumbs2.imgbox.com/5b/3a/sZIQ12PE_t.png" alt="image host" />
             </a>
         <h1 style="color: white">Kronos</h1>
-        <div class="groupcode" style="color: white">
-            <h1> {{team_name}} Code: </h1>
-            <div id="copy" class="code" style="margin-left: 10px; margin-right: 10px">
+        <div class="groupcode">
+            <h1> {{team_name}} Code:</h1>
+            <div id="copy" class="code" style="margin-left: 8px; margin-right: 10px">
                 <h1>{{team_code}}</h1>
             </div>
                 <button type="button" class="copybutton" onclick="copyEvent('copy')">Copy Code</button>
@@ -25,12 +25,12 @@
         <div class="go-back">
             <a href="{{url_for('team_control')}}" style="margin-right: 25px; margin-top: 15px">Choose Another Team</a>
         </div>
-        <div class="availability-container" style="margin-top: 60px; pointer-events: none;">
+        <div class="availability-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="schedule-table">
                         <table class="table bg-white">
-                            <thead name="table-columns">
+                            <thead name="table-columns" style="pointer-events: none;">
                                 <tr name="column-names">
                                     <th>Availability</th>
                                     <th>12 pm</th>
