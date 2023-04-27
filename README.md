@@ -26,20 +26,20 @@
 #### - https://github.com/mauroalvizo/cs-swe-group-project/pull/6
 
 ### Pull requests made by Mauro and reviewed by Jayton  
-#### -  
-#### -  
-#### -  
+#### -  https://github.com/mauroalvizo/cs-swe-group-project/pull/4
+#### -  https://github.com/mauroalvizo/cs-swe-group-project/pull/5
+#### -  https://github.com/mauroalvizo/cs-swe-group-project/pull/12
 
 <br>
 <br>
 
 ## Two things that we enjoyed  
-#### -  
-#### -  
+#### -  We enjoyed the process of designing an application from scratch that we were actually interested in and would use ourselves.
+#### -  We enjoyed improving our html and css skills when it came to making our app look more professional. In particular we learned alot about containers.
 
 ## Two things that we did not or wanted to learn from this project  
-#### -  
-#### -  
+#### -  We wanted to learn react however we ran out of time to properly implement it in time
+#### -  We struggled with dealing with databases and we did not enjoy having to mess around with them so much.
  
 <br>
 <br>
