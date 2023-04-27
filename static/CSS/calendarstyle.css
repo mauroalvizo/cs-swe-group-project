@@ -2,7 +2,7 @@
 body{margin-top:20px;}
 
 .background-image {
-    background-image: url("https://lh3.googleusercontent.com/Debh11wkMr42NFn976HGZIVOJamQ4epogyXTHToAgei-UolWI47F603BjH7Vjaq6-oP0a00qbF82FQ4pww28JLZf7chta03ib9i6dSc6P3guhw4O9GoeXVgW4BOtFs8TDTELA6E3u2iZ9-6V438vL49noDtFkF0WzUESLI5WIiFOAAUE9qz2eXhHzqhySihRc5l91a96YVmQMpRGC5hk8us0OnOh6Gel486ZE8mnN0YXurpNukS48m0xaltFcqBdiLN2Sm0ykQJsgqp55wAufBTfgUjJS3RBMRKWEZ2fLIFF1IxIPEUsPG7YsNCCxC55kl3bjeFbLQ1d-wz-pK-bwWN1FmgBa02e0Ohi73hXR3daHKiMXUWPaMINmVr0CbRP6VGxqgCgxQO3dg_Tjf5J5PlgnjrcBaChf2fYXKwo-i6u9xZpOugJRo5n7KjNHZpis-UhFdBzY6ljWJNg0BPeWuj-PBcEjzPSTr75D3t29ck5IgITB-WcOF_LKkhwzrZGytsrGN31fqjflkHI7ddr5Co9nPkFob0Mbel8xEkmJ6zJzbUC4e1nZxuJOqlgGFZCCoDxdHMbFoxF0v6hzSF_iIQsAklRfW3kDZTj_g0z1fUn450MYbAHiESYLwyZWMcx20XNEyCf9sIEJ1le8QweGcxDfYBzQs5UU1epy61ts-aTFGBPqVoYOAnNhIbK1IYvHh4n9m69f_ZreHqFu0pku9FsLorUc9UcUD7zAPFuEBVehRrl2tZYe1FBdwnadeZAmB5QYYePVZHQcZLlfAUv6DLYoLQZbJldr_YooUZQiApMHH3x2DJ4AXZ76vmkjyUcwVGvC8XlmmAaF_JirFQKY1hVZopMmMlW8yibOKtVBFRyzi_SoywZY4xJDSP55hPTEm_fIRmSkycA6gdInWauq8y43z_PpQ7TjZOKdlLnp4aR5Vo44ZKDqkD-ZyUFfrEaKNoBPFePKVAp3FdDsqeyuMDVvHvxUOrvULM7KfTfIwS4lvEj0R22SgZud5ykGlBPEpCbfX7ld-GI3x0DEpbJnN2m4ww=w2245-h1263-s-no?authuser=0");
+    background-image: url("/static/background.png");
     background-size: cover;
     background-position: center;
     position: fixed;
@@ -14,9 +14,9 @@ body{margin-top:20px;}
 }
 
 .schedule-table {
-    overflow-x: scroll;
-    width: 2500px;
-    margin-left: 5px;
+    overflow-x: auto;
+    width: 2499px;
+    margin-left: 25px;
     margin-top: 60px;
 }
 
@@ -52,7 +52,7 @@ body{margin-top:20px;}
 .schedule-table table tbody td {
     vertical-align: middle;
     height: 100px;
-    border: 1px solid #282b30;  /* #e2edf8 calendar grid color */
+    border: 1px solid #8f8f8f48;  /* #e2edf8 calendar grid color */
     font-weight: 500;
     padding: 0px;
     text-align: center;
@@ -284,15 +284,12 @@ a img {
     color: white;
     text-align: center;
     text-decoration: none;
-    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 .go-back a:hover{
     color: #cdb2db;
     background-color: #1a1b1c;
 }
-
-
 
 .available {
     height: 10px;
@@ -305,38 +302,72 @@ a img {
 .container {
     display: block;
     justify-content: center;
-    margin-left: 35.5%;
     margin-top: 20px;
 }
 
 .legend-container {
-    display: block;
+    display: flex;
+    width: fit-content;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #2a2c2e;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 
 /***************/
 .interaction-container {
-    display: block;
+    display: flex;
+    width: fit-content;
     justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 20px;
 }
 /**************/
+
+.members {
+    margin: 0;
+    padding: 0;
+  }
+
 .members li {
     display: inline-block;
     margin-right: 10px;
-}
-
-ul.members {
-    list-style: disc;
+    margin-left: 0px; 
 }
 
 .bg-white{
     background-color: #36393e!important;        /*changes calendar box color*/
 }
 .text-primary{
-    color: white!important;                 /* changes title color */
+    color: white !important;                 /* changes title color */
 }
 label[for="time"] {
     color: white;
   }
 
 /* slightly darker gray #282b30 */
+
+.groupcode {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-left: 700px;
+}
+  
+.copybutton {
+    background-color: #2a2c2e;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.copybutton:hover{
+    color: #cdb2db;
+    background-color: #1a1b1c;
+}

@@ -9,20 +9,23 @@
     </head>
     <body>
         <div class="background-image"></div>
-        <div class="logo-container">
+        <div class="logo-container" style="margin-left: 25px">
             <a href="{{url_for('home')}}">
                 <img src="https://thumbs2.imgbox.com/5b/3a/sZIQ12PE_t.png" alt="image host" />
             </a>
-        <h10>Kronos   Group Code: {{team_code}}</h10>
+        <h1 style="color: white">Kronos</h1>
+        <div class="groupcode" style="color: white">
+            <h1> {{team_name}} Code: </h1>
+            <div id="copy" class="code" style="margin-left: 10px; margin-right: 10px">
+                <h1>{{team_code}}</h1>
+            </div>
+                <button type="button" class="copybutton" onclick="copyEvent('copy')">Copy Code</button>
+            </div>
         </div>
         <div class="go-back">
-            <a href="{{url_for('team_control')}}">Choose Another Group</a>
+            <a href="{{url_for('team_control')}}" style="margin-right: 25px; margin-top: 15px">Choose Another Team</a>
         </div>
-        <div class="availability-container">
-            <div class="w-95 w-md-75 w-lg-60 w-xl-55 mx-auto mb-6 text-center">
-                <h2 class="display-18 display-md-16 display-lg-14 mb-0"><span class="text-primary" style="margin-left: -3.5%;">{{team_name}}</span></h2>
-
-            </div>
+        <div class="availability-container" style="margin-top: 60px; pointer-events: none;">
             <div class="row">
                 <div class="col-md-12">
                     <div class="schedule-table">
@@ -57,7 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody name="table-rows">
-                                {% set colors = ['red', 'blue', 'green', 'orange', 'purple', 'yellow'] %}
+                                {% set colors = ['red', 'cyan', 'green', '#c46a32', 'purple', 'yellow'] %}
                                 <tr name="Sunday">
                                     <td class="day">Sunday</td>
                                     {% for hour in range(12, 24) %}
@@ -283,8 +286,9 @@
         </div>
         <div class="container">
             <div class="legend-container">
-                {% set colors = ['red', 'blue', 'green', 'orange', 'purple', 'yellow'] %}
-                <ul class="members" style="list-style: disc;">
+                <p class="members" style="color: white; margin-right: 10px; margin-left: 10px"> Members: </p>
+                {% set colors = ['red', 'cyan', 'green', '#c46a32', 'purple', 'yellow'] %}
+                <ul class="members">
                     {% for i, username in enumerate(gamer_names) %}
                         <li style="color: {{colors[i]}};"><div class="gamer" style="color: {{colors[i]}};">{{ str(username)[2:-3] }}</div></li>
                     {% endfor %}
@@ -365,5 +369,20 @@
         <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
         <script type="text/javascript"></script>
+
+        <script>
+            const tableContainer = document.querySelector('.schedule-table');
+            tableContainer.addEventListener('wheel', (event) => {
+              event.preventDefault();
+              tableContainer.scrollLeft += event.deltaY;
+            });            
+        </script>
+        <script>
+            function copyEvent(id) {
+                var str = document.getElementById(id);
+                window.getSelection().selectAllChildren(str);
+                document.execCommand("Copy")
+            }
+        </script>
     </body>
 </html>

@@ -141,7 +141,10 @@ def logout():
 @app.route('/team', methods = ['POST', 'GET'])
 @login_required
 def team_control():
-    print(request.form)
+    
+    teams = Team.query.join(TeamMember).filter(TeamMember.gamer_id == current_user.id).all()
+    team_codes_and_names = [(team.team_code, team.team_name) for team in teams]
+
     if "team_code" in request.form:
         team_code = request.form.get("team_code")
         team = Team.query.filter_by(team_code=team_code).first()
@@ -177,7 +180,9 @@ def team_control():
         return redirect(url_for('gamer_team', team_code=team_code))                
     
     return render_template (
-        "team_control.html"
+        "team_control.html",
+        team_codes_and_names=team_codes_and_names,
+        enumerate=enumerate,
     )
 
 @app.route('/calendar/<team_code>', methods=['POST', 'GET'])
