@@ -41,3 +41,8 @@
 #### -  
 #### -  
  
+<br>
+<br>
+
+## Future Improvements
+#### - We wish to make the loading faster, particularly on the schedule page, as it has way too many database calls
