@@ -22,7 +22,7 @@
 ## Pull request links  
 ### Pull requests made by Jayton and reviewed by Mauro  
 #### - https://github.com/mauroalvizo/cs-swe-group-project/pull/10
-#### -  
+#### - https://github.com/mauroalvizo/cs-swe-group-project/pull/8
 #### -  
 
 ### Pull requests made by Mauro and reviewed by Jayton  
