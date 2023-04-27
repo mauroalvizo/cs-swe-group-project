@@ -1,4 +1,7 @@
 # Kronos
+#### Created by Mauro Alvizo and Jayton Schreiner
+
+<br>
 
 ## Website Link  
 ### https://kronosgaming.fly.dev/  
