@@ -47,3 +47,9 @@
 ## Future Improvements
 #### - We wish to make the loading faster, particularly on the schedule page, as it has way too many database calls
 #### - We also might want to make this into a discord bot somehow so teams can interact and check availabilities in their servers
+#### - We want to increase the number of people in a group at a time
+#### - We want to add notification options such as email
+#### - We want to add email login input and google login authentication
+
+
+
